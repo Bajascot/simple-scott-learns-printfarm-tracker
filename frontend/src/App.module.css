@@ -1,0 +1,48 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.nav {
+  width: 210px;
+  background: #1e293b;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.nav a {
+  color: #94a3b8;
+  padding: 0.55rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav a:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.nav a.active {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 1.25rem;
+  padding: 0 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+}

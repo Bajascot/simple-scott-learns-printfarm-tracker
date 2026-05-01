@@ -1,0 +1,15 @@
+[Unit]
+Description=PrintFarm Tracker
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/printfarm-tracker
+Environment="PATH=/home/pi/printfarm-tracker/venv/bin"
+ExecStart=/home/pi/printfarm-tracker/venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

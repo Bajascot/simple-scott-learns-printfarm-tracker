@@ -1,0 +1,61 @@
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.header h1 { margin: 0; }
+
+.btn {
+  background: #3b82f6; color: #fff; border: none;
+  padding: 0.5rem 1.1rem; border-radius: 7px;
+  cursor: pointer; font-size: 0.92rem; font-weight: 600;
+}
+.btn:hover { background: #2563eb; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+
+.btnSm {
+  padding: 0.25rem 0.65rem; border: 1px solid #cbd5e1;
+  border-radius: 5px; cursor: pointer; margin-right: 0.3rem;
+  background: #fff; font-size: 0.82rem;
+}
+.btnSm:hover { background: #f1f5f9; }
+.danger { border-color: #fca5a5; color: #dc2626; }
+.danger:hover { background: #fee2e2; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; }
+
+.card {
+  background: #fff; border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+.cardTop { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+
+.dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.online   { background: #22c55e; }
+.offline  { background: #ef4444; }
+.checking { background: #fbbf24; }
+
+.statusText { font-size: 0.78rem; color: #64748b; }
+.name  { margin: 0 0 0.2rem; font-size: 1.05rem; }
+.model { margin: 0 0 0.2rem; color: #64748b; font-size: 0.88rem; }
+.url   { margin: 0 0 0.5rem; font-family: monospace; font-size: 0.78rem; color: #94a3b8; }
+.notes { margin: 0 0 0.5rem; font-size: 0.85rem; color: #475569; }
+.cardActions { display: flex; gap: 0.3rem; margin-top: 0.75rem; }
+
+.overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center; z-index: 200;
+}
+.dialog {
+  background: #fff; border-radius: 12px; padding: 2rem;
+  width: 440px; box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.dialog h2 { margin-top: 0; }
+.form { display: flex; flex-direction: column; gap: 0.8rem; }
+.form label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.88rem; font-weight: 600; color: #334155; }
+.form input, .form textarea {
+  padding: 0.45rem 0.7rem; border: 1px solid #cbd5e1;
+  border-radius: 6px; font-size: 0.92rem; font-family: inherit;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid #3b82f6; border-color: transparent; }
+.form textarea { resize: vertical; }
+.actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 0.5rem; }
+.actions button { padding: 0.5rem 1.3rem; border-radius: 7px; border: 1px solid #cbd5e1; cursor: pointer; background: #fff; font-size: 0.92rem; }
