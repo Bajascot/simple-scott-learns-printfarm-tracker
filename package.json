@@ -1,0 +1,21 @@
+{
+  "name": "simple-scott-learns-printer-tracker",
+  "version": "1.0.0",
+  "description": "A locally-hosted 3D print farm tracker designed to run on a Raspberry Pi. Track filament inventory, calculate per-print costs (filament + electricity), monitor printer runtime, and integrate with Moonraker/Klipper, Govee smart plugs, Amazon order history, and slicer file exports.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bajascot/simple-scott-learns-printfarm-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Bajascot/simple-scott-learns-printfarm-tracker/issues"
+  },
+  "homepage": "https://github.com/Bajascot/simple-scott-learns-printfarm-tracker#readme"
+}

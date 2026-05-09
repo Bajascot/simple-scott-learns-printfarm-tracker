@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m venv venv)",
+      "Bash(py --version)",
+      "Bash(where python*)",
+      "Bash(venv\\\\Scripts\\\\pip install *)",
+      "Bash(venv/Scripts/pip install *)",
+      "Bash(npm install *)",
+      "Bash(where node *)",
+      "Bash(where npm *)",
+      "PowerShell(npm *)"
+    ]
+  }
+}
