@@ -2,6 +2,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import Jobs from './pages/Jobs'
 import Printers from './pages/Printers'
+import Purchases from './pages/Purchases'
 import Settings from './pages/Settings'
 import Spools from './pages/Spools'
 import styles from './App.module.css'
@@ -16,6 +17,7 @@ export default function App() {
           <NavLink to="/spools" className={({ isActive }) => isActive ? styles.active : ''}>Spools</NavLink>
           <NavLink to="/printers" className={({ isActive }) => isActive ? styles.active : ''}>Printers</NavLink>
           <NavLink to="/jobs" className={({ isActive }) => isActive ? styles.active : ''}>Jobs</NavLink>
+          <NavLink to="/purchases" className={({ isActive }) => isActive ? styles.active : ''}>Purchases</NavLink>
           <NavLink to="/settings" className={({ isActive }) => isActive ? styles.active : ''}>Settings</NavLink>
         </nav>
         <main className={styles.main}>
@@ -24,6 +26,7 @@ export default function App() {
             <Route path="/spools" element={<Spools />} />
             <Route path="/printers" element={<Printers />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/purchases" element={<Purchases />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>

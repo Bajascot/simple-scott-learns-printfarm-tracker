@@ -1,7 +1,7 @@
 from datetime import datetime, date
 from enum import Enum
 
-from sqlalchemy import Column, Date, DateTime, Enum as SAEnum, Float, ForeignKey, Integer, String
+from sqlalchemy import Column, Date, DateTime, Enum as SAEnum, Float, ForeignKey, Integer, String, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from backend.db import Base
@@ -79,9 +79,13 @@ class PrintJob(Base):
 
 class Purchase(Base):
     __tablename__ = "purchases"
+    __table_args__ = (
+        UniqueConstraint("amazon_order_id", "asin", name="uq_purchase_order_asin"),
+    )
 
     id = Column(Integer, primary_key=True, index=True)
-    amazon_order_id = Column(String, unique=True, nullable=True)
+    amazon_order_id = Column(String, nullable=True, index=True)
+    asin = Column(String, nullable=True)
     item_name = Column(String, nullable=False)
     filament_weight_g = Column(Float, nullable=True)
     cost = Column(Float, nullable=False)
