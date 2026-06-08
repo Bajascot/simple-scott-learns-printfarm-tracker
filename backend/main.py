@@ -3,7 +3,6 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.db import Base, engine
@@ -32,10 +31,6 @@ app.include_router(costs.router, prefix="/api")
 FRONTEND_DIST = Path(__file__).parent.parent / "frontend" / "dist"
 
 if FRONTEND_DIST.exists():
-    assets_dir = FRONTEND_DIST / "assets"
-    if assets_dir.exists():
-        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
-
-    @app.get("/{full_path:path}", include_in_schema=False)
-    async def serve_spa(full_path: str):
-        return FileResponse(FRONTEND_DIST / "index.html")
+    # html=True makes StaticFiles serve index.html for unknown paths (SPA routing)
+    # and only activates after all API routes are checked
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="spa")

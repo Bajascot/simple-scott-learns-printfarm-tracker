@@ -39,12 +39,12 @@ class PrinterResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
-@router.get("/", response_model=List[PrinterResponse])
+@router.get("", response_model=List[PrinterResponse])
 def list_printers(db: Session = Depends(get_db)):
     return db.query(Printer).all()
 
 
-@router.post("/", response_model=PrinterResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=PrinterResponse, status_code=status.HTTP_201_CREATED)
 def create_printer(data: PrinterCreate, db: Session = Depends(get_db)):
     printer = Printer(**data.model_dump())
     db.add(printer)

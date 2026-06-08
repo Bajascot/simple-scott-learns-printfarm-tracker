@@ -72,7 +72,7 @@ def _recalculate_costs(job: PrintJob, db: Session) -> None:
         job.total_cost = round((filament_cost or 0.0) + (energy_cost or 0.0), 4)
 
 
-@router.get("/", response_model=List[JobResponse])
+@router.get("", response_model=List[JobResponse])
 def list_jobs(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
@@ -89,7 +89,7 @@ def list_jobs(
     return q.offset((page - 1) * page_size).limit(page_size).all()
 
 
-@router.post("/", response_model=JobResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=JobResponse, status_code=status.HTTP_201_CREATED)
 def create_job(data: JobCreate, db: Session = Depends(get_db)):
     job_data = data.model_dump()
     if job_data.get("started_at") is None:

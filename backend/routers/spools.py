@@ -51,12 +51,12 @@ class SpoolResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
-@router.get("/", response_model=List[SpoolResponse])
+@router.get("", response_model=List[SpoolResponse])
 def list_spools(db: Session = Depends(get_db)):
     return db.query(Spool).all()
 
 
-@router.post("/", response_model=SpoolResponse, status_code=status.HTTP_201_CREATED)
+@router.post("", response_model=SpoolResponse, status_code=status.HTTP_201_CREATED)
 def create_spool(data: SpoolCreate, db: Session = Depends(get_db)):
     spool = Spool(**data.model_dump())
     db.add(spool)
