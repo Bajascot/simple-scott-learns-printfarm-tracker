@@ -31,6 +31,5 @@ def list_purchases(db: Session = Depends(get_db)):
 
 
 @router.post("/import/amazon-csv", status_code=status.HTTP_200_OK)
-async def import_amazon_csv(file: UploadFile = File(...)):
-    result = await import_from_csv(file.file)
-    return result
+def import_amazon_csv(file: UploadFile = File(...), db: Session = Depends(get_db)):
+    return import_from_csv(file.file, db)

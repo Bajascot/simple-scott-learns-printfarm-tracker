@@ -48,32 +48,27 @@ def parse_csv(file: IO[bytes]) -> list[dict]:
     return results
 
 
-async def import_from_csv(file: IO[bytes]) -> dict:
+def import_from_csv(file: IO[bytes], db) -> dict:
     """Parse CSV and persist new filament purchases, skipping duplicates."""
-    from backend.db import SessionLocal
     from backend.models import Purchase
 
     orders = parse_csv(file)
-    db = SessionLocal()
     inserted = skipped = 0
-    try:
-        for order in orders:
-            existing = (
-                db.query(Purchase)
-                .filter(
-                    Purchase.amazon_order_id == order['amazon_order_id'],
-                    Purchase.asin == order['asin'],
-                )
-                .first()
+    for order in orders:
+        existing = (
+            db.query(Purchase)
+            .filter(
+                Purchase.amazon_order_id == order['amazon_order_id'],
+                Purchase.asin == order['asin'],
             )
-            if existing:
-                skipped += 1
-                continue
-            db.add(Purchase(**order))
-            inserted += 1
-        db.commit()
-    finally:
-        db.close()
+            .first()
+        )
+        if existing:
+            skipped += 1
+            continue
+        db.add(Purchase(**order))
+        inserted += 1
+    db.commit()
 
     logger.info("Amazon CSV import: %d inserted, %d skipped", inserted, skipped)
     return {'inserted': inserted, 'skipped': skipped, 'total_found': len(orders)}
